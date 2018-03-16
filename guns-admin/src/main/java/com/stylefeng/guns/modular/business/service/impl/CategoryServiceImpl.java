@@ -1,11 +1,11 @@
-package com.mmall.service.impl;
+package com.stylefeng.guns.modular.business.service.impl;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
-import com.mmall.common.ServerResponse;
-import com.mmall.dao.CategoryMapper;
-import com.mmall.pojo.Category;
-import com.mmall.service.ICategoryService;
+import com.stylefeng.guns.modular.business.common.ServerResponse;
+import com.stylefeng.guns.modular.business.dao.CategoryMapper;
+import com.stylefeng.guns.modular.business.pojo.Category;
+import com.stylefeng.guns.modular.business.service.ICategoryService;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -27,6 +27,7 @@ public class CategoryServiceImpl implements ICategoryService {
     @Autowired
     private CategoryMapper categoryMapper;
 
+    @Override
     public ServerResponse addCategory(String categoryName,Integer parentId){
         if(parentId == null || StringUtils.isBlank(categoryName)){
             return ServerResponse.createByErrorMessage("添加品类参数错误");
@@ -44,6 +45,7 @@ public class CategoryServiceImpl implements ICategoryService {
         return ServerResponse.createByErrorMessage("添加品类失败");
     }
 
+    @Override
     public ServerResponse updateCategoryName(Integer categoryId,String categoryName){
         if(categoryId == null || StringUtils.isBlank(categoryName)){
             return ServerResponse.createByErrorMessage("更新品类参数错误");
@@ -59,6 +61,7 @@ public class CategoryServiceImpl implements ICategoryService {
         return ServerResponse.createByErrorMessage("更新品类名字失败");
     }
 
+    @Override
     public ServerResponse<List<Category>> getChildrenParallelCategory(Integer categoryId){
         List<Category> categoryList = categoryMapper.selectCategoryChildrenByParentId(categoryId);
         if(CollectionUtils.isEmpty(categoryList)){
@@ -73,6 +76,7 @@ public class CategoryServiceImpl implements ICategoryService {
      * @param categoryId
      * @return
      */
+    @Override
     public ServerResponse<List<Integer>> selectCategoryAndChildrenById(Integer categoryId){
         Set<Category> categorySet = Sets.newHashSet();
         findChildCategory(categorySet,categoryId);

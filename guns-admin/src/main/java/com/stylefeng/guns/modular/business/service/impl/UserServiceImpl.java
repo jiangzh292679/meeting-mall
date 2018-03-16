@@ -4,9 +4,9 @@ import com.stylefeng.guns.modular.business.common.Const;
 import com.stylefeng.guns.modular.business.common.ServerResponse;
 import com.stylefeng.guns.modular.business.common.TokenCache;
 import com.stylefeng.guns.modular.business.dao.UserMapper;
+import com.stylefeng.guns.modular.business.pojo.User;
 import com.stylefeng.guns.modular.business.service.IUserService;
 import com.stylefeng.guns.modular.business.util.MD5Util;
-import com.stylefeng.guns.modular.system.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -16,7 +16,7 @@ import java.util.UUID;
 /**
  * Created by geely
  */
-@Service("iUserService")
+@Service("iUserService_b")
 public class UserServiceImpl implements IUserService {
 
     @Autowired

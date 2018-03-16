@@ -1,4 +1,4 @@
-package com.mmall.common;
+package com.stylefeng.guns.modular.business.common;
 
 /**
  * Created by geely

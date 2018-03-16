@@ -1,11 +1,12 @@
-package com.mmall.dao;
+package com.stylefeng.guns.modular.business.dao;
 
-import com.mmall.pojo.Cart;
+import com.stylefeng.guns.modular.business.pojo.Cart;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
 public interface CartMapper {
+
     int deleteByPrimaryKey(Integer id);
 
     int insert(Cart record);
@@ -18,16 +19,16 @@ public interface CartMapper {
 
     int updateByPrimaryKey(Cart record);
 
-    Cart selectCartByUserIdProductId(@Param("userId") Integer userId, @Param("productId")Integer productId);
+    Cart selectCartByUserIdProductId(@Param("userId") Integer userId, @Param("productId") Integer productId);
 
     List<Cart> selectCartByUserId(Integer userId);
 
     int selectCartProductCheckedStatusByUserId(Integer userId);
 
-    int deleteByUserIdProductIds(@Param("userId") Integer userId,@Param("productIdList")List<String> productIdList);
+    int deleteByUserIdProductIds(@Param("userId") Integer userId, @Param("productIdList") List<String> productIdList);
 
 
-    int checkedOrUncheckedProduct(@Param("userId") Integer userId,@Param("productId")Integer productId,@Param("checked") Integer checked);
+    int checkedOrUncheckedProduct(@Param("userId") Integer userId, @Param("productId") Integer productId, @Param("checked") Integer checked);
 
     int selectCartProductCount(@Param("userId") Integer userId);
 

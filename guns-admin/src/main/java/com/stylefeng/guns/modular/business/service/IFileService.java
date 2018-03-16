@@ -1,4 +1,4 @@
-package com.mmall.service;
+package com.stylefeng.guns.modular.business.service;
 
 import org.springframework.web.multipart.MultipartFile;
 

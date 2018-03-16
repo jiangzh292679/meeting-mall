@@ -1,7 +1,7 @@
-package com.mmall.vo;
+package com.stylefeng.guns.modular.business.vo;
 
 /**
- * Created by geely
+ * Created by jiangzh
  */
 public class ShippingVo {
     private String receiverName;

@@ -1,13 +1,13 @@
-package com.mmall.controller.backend;
+package com.stylefeng.guns.modular.business.controller;
 
 import com.github.pagehelper.PageInfo;
-import com.mmall.common.Const;
-import com.mmall.common.ResponseCode;
-import com.mmall.common.ServerResponse;
-import com.mmall.pojo.User;
-import com.mmall.service.IOrderService;
-import com.mmall.service.IUserService;
-import com.mmall.vo.OrderVo;
+import com.stylefeng.guns.modular.business.common.Const;
+import com.stylefeng.guns.modular.business.common.ResponseCode;
+import com.stylefeng.guns.modular.business.common.ServerResponse;
+import com.stylefeng.guns.modular.business.pojo.User;
+import com.stylefeng.guns.modular.business.service.IOrderService;
+import com.stylefeng.guns.modular.business.service.IUserService;
+import com.stylefeng.guns.modular.business.vo.OrderVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,35 +34,16 @@ public class OrderManageController {
     public ServerResponse<PageInfo> orderList(HttpSession session, @RequestParam(value = "pageNum",defaultValue = "1") int pageNum,
                                               @RequestParam(value = "pageSize",defaultValue = "10")int pageSize){
 
-        User user = (User)session.getAttribute(Const.CURRENT_USER);
-        if(user == null){
-            return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),"用户未登录,请登录管理员");
 
-        }
-        if(iUserService.checkAdminRole(user).isSuccess()){
-            //填充我们增加产品的业务逻辑
-            return iOrderService.manageList(pageNum,pageSize);
-        }else{
-            return ServerResponse.createByErrorMessage("无权限操作");
-        }
+        //填充我们增加产品的业务逻辑
+        return iOrderService.manageList(pageNum,pageSize);
     }
 
     @RequestMapping("detail.do")
     @ResponseBody
     public ServerResponse<OrderVo> orderDetail(HttpSession session, Long orderNo){
 
-        User user = (User)session.getAttribute(Const.CURRENT_USER);
-        if(user == null){
-            return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),"用户未登录,请登录管理员");
-
-        }
-        if(iUserService.checkAdminRole(user).isSuccess()){
-            //填充我们增加产品的业务逻辑
-
-            return iOrderService.manageDetail(orderNo);
-        }else{
-            return ServerResponse.createByErrorMessage("无权限操作");
-        }
+        return iOrderService.manageDetail(orderNo);
     }
 
 
@@ -71,17 +52,9 @@ public class OrderManageController {
     @ResponseBody
     public ServerResponse<PageInfo> orderSearch(HttpSession session, Long orderNo,@RequestParam(value = "pageNum",defaultValue = "1") int pageNum,
                                                @RequestParam(value = "pageSize",defaultValue = "10")int pageSize){
-        User user = (User)session.getAttribute(Const.CURRENT_USER);
-        if(user == null){
-            return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),"用户未登录,请登录管理员");
 
-        }
-        if(iUserService.checkAdminRole(user).isSuccess()){
-            //填充我们增加产品的业务逻辑
-            return iOrderService.manageSearch(orderNo,pageNum,pageSize);
-        }else{
-            return ServerResponse.createByErrorMessage("无权限操作");
-        }
+        return iOrderService.manageSearch(orderNo,pageNum,pageSize);
+
     }
 
 
@@ -90,24 +63,9 @@ public class OrderManageController {
     @ResponseBody
     public ServerResponse<String> orderSendGoods(HttpSession session, Long orderNo){
 
-        User user = (User)session.getAttribute(Const.CURRENT_USER);
-        if(user == null){
-            return ServerResponse.createByErrorCodeMessage(ResponseCode.NEED_LOGIN.getCode(),"用户未登录,请登录管理员");
+        return iOrderService.manageSendGoods(orderNo);
 
-        }
-        if(iUserService.checkAdminRole(user).isSuccess()){
-            //填充我们增加产品的业务逻辑
-            return iOrderService.manageSendGoods(orderNo);
-        }else{
-            return ServerResponse.createByErrorMessage("无权限操作");
-        }
     }
-
-
-
-
-
-
 
 
 }

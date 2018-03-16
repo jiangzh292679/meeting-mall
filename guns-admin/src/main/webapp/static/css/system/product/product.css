@@ -1,0 +1,86 @@
+
+/*主图部分*/
+.imageShowcase{
+    height: 170px;
+}
+
+.imageShowcase .imageDiv{
+    display: inline;
+}
+
+.imageShowcase .imageDiv .main-image{
+    height: 150px;
+    width: 150px;
+    margin-right: 15px;
+}
+
+#fileUploadForm{
+    display: inline-block;
+    width: 100px;
+    height: 20px;
+}
+
+#fileUploadForm .upload{
+    padding: 4px 10px;
+    height: 20px;
+    line-height: 20px;
+    position: relative;
+    border: 1px solid #999;
+    text-decoration: none;
+    color: #666;
+}
+
+#fileUploadForm #upload_file{
+    position: absolute;
+    overflow: hidden;
+    right: 0;
+    top: 0;
+    opacity: 0;
+}
+
+
+/*商品详细信息部分*/
+.procuct-info .content-line{
+    margin: 0 0 40px 40px;
+}
+
+.procuct-info .product-content{
+    height: 40px;
+    display: inline;
+    margin-right: 40px;
+}
+
+.procuct-info .product-content .product-title{
+    font:bold 14px/1.5em "Microsoft YaHei";
+    margin-right: 20px;
+}
+
+.procuct-info .product-content .product-div{
+    width: 640px;
+    height: 40px;
+    position: relative;
+}
+
+.procuct-info .product-content .product-div .product-text{
+    width: 640px;
+    height: 40px;
+    padding-left: 10px;
+    line-height: 40px;
+    border-radius:3px;
+    border:1px solid #000;
+    font-weight: normal;
+}
+
+.procuct-info .product-content .product-div .prefix-span{
+    background: #f3f3f3;
+    color: #111;
+    height: 38px;
+    line-height: 38px;
+    width: 38px;
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    bottom: 1px;
+    border-radius:3px;
+    text-align: center;
+}

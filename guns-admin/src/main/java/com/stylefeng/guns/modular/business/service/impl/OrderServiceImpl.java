@@ -1,4 +1,4 @@
-package com.mmall.service.impl;
+package com.stylefeng.guns.modular.business.service.impl;
 
 import com.alipay.api.AlipayResponse;
 import com.alipay.api.response.AlipayTradePrecreateResponse;
@@ -10,34 +10,23 @@ import com.alipay.demo.trade.model.result.AlipayF2FPrecreateResult;
 import com.alipay.demo.trade.service.AlipayTradeService;
 import com.alipay.demo.trade.service.impl.AlipayTradeServiceImpl;
 import com.alipay.demo.trade.utils.ZxingUtils;
-import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.mmall.common.Const;
-import com.mmall.common.ServerResponse;
-import com.mmall.dao.CartMapper;
-import com.mmall.dao.OrderItemMapper;
-import com.mmall.dao.OrderMapper;
-import com.mmall.dao.PayInfoMapper;
-import com.mmall.dao.ProductMapper;
-import com.mmall.dao.ShippingMapper;
-import com.mmall.pojo.Cart;
-import com.mmall.pojo.Order;
-import com.mmall.pojo.OrderItem;
-import com.mmall.pojo.PayInfo;
-import com.mmall.pojo.Product;
-import com.mmall.pojo.Shipping;
-import com.mmall.service.IOrderService;
-import com.mmall.util.BigDecimalUtil;
-import com.mmall.util.DateTimeUtil;
-import com.mmall.util.FTPUtil;
-import com.mmall.util.PropertiesUtil;
-import com.mmall.vo.OrderItemVo;
-import com.mmall.vo.OrderProductVo;
-import com.mmall.vo.OrderVo;
-import com.mmall.vo.ShippingVo;
+import com.stylefeng.guns.modular.business.common.Const;
+import com.stylefeng.guns.modular.business.common.ServerResponse;
+import com.stylefeng.guns.modular.business.dao.*;
+import com.stylefeng.guns.modular.business.pojo.*;
+import com.stylefeng.guns.modular.business.service.IOrderService;
+import com.stylefeng.guns.modular.business.util.BigDecimalUtil;
+import com.stylefeng.guns.modular.business.util.DateTimeUtil;
+import com.stylefeng.guns.modular.business.util.FTPUtil;
+import com.stylefeng.guns.modular.business.util.PropertiesUtil;
+import com.stylefeng.guns.modular.business.vo.OrderItemVo;
+import com.stylefeng.guns.modular.business.vo.OrderProductVo;
+import com.stylefeng.guns.modular.business.vo.OrderVo;
+import com.stylefeng.guns.modular.business.vo.ShippingVo;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
@@ -90,8 +79,8 @@ public class OrderServiceImpl implements IOrderService {
     @Autowired
     private ShippingMapper shippingMapper;
 
-
-    public  ServerResponse createOrder(Integer userId,Integer shippingId){
+    @Override
+    public ServerResponse createOrder(Integer userId, Integer shippingId){
 
         //从购物车中获取数据
         List<Cart> cartList = cartMapper.selectCheckedCartByUserId(userId);
@@ -287,7 +276,7 @@ public class OrderServiceImpl implements IOrderService {
 
 
 
-
+    @Override
     public ServerResponse<String> cancel(Integer userId,Long orderNo){
         Order order  = orderMapper.selectByUserIdAndOrderNo(userId,orderNo);
         if(order == null){
@@ -309,7 +298,7 @@ public class OrderServiceImpl implements IOrderService {
 
 
 
-
+    @Override
     public ServerResponse getOrderCartProduct(Integer userId){
         OrderProductVo orderProductVo = new OrderProductVo();
         //从购物车中获取数据
@@ -334,7 +323,7 @@ public class OrderServiceImpl implements IOrderService {
         return ServerResponse.createBySuccess(orderProductVo);
     }
 
-
+    @Override
     public ServerResponse<OrderVo> getOrderDetail(Integer userId,Long orderNo){
         Order order = orderMapper.selectByUserIdAndOrderNo(userId,orderNo);
         if(order != null){
@@ -345,7 +334,7 @@ public class OrderServiceImpl implements IOrderService {
         return  ServerResponse.createByErrorMessage("没有找到该订单");
     }
 
-
+    @Override
     public ServerResponse<PageInfo> getOrderList(Integer userId,int pageNum,int pageSize){
         PageHelper.startPage(pageNum,pageSize);
         List<Order> orderList = orderMapper.selectByUserId(userId);
@@ -392,7 +381,7 @@ public class OrderServiceImpl implements IOrderService {
 
 
 
-
+    @Override
     public ServerResponse pay(Long orderNo,Integer userId,String path){
         Map<String ,String> resultMap = Maps.newHashMap();
         Order order = orderMapper.selectByUserIdAndOrderNo(userId,orderNo);
@@ -525,7 +514,7 @@ public class OrderServiceImpl implements IOrderService {
         }
     }
 
-
+    @Override
     public ServerResponse aliCallback(Map<String,String> params){
         Long orderNo = Long.parseLong(params.get("out_trade_no"));
         String tradeNo = params.get("trade_no");
@@ -558,7 +547,7 @@ public class OrderServiceImpl implements IOrderService {
 
 
 
-
+    @Override
     public ServerResponse queryOrderPayStatus(Integer userId,Long orderNo){
         Order order = orderMapper.selectByUserIdAndOrderNo(userId,orderNo);
         if(order == null){
@@ -584,7 +573,7 @@ public class OrderServiceImpl implements IOrderService {
 
 
     //backend
-
+    @Override
     public ServerResponse<PageInfo> manageList(int pageNum,int pageSize){
         PageHelper.startPage(pageNum,pageSize);
         List<Order> orderList = orderMapper.selectAllOrder();
@@ -594,7 +583,7 @@ public class OrderServiceImpl implements IOrderService {
         return ServerResponse.createBySuccess(pageResult);
     }
 
-
+    @Override
     public ServerResponse<OrderVo> manageDetail(Long orderNo){
         Order order = orderMapper.selectByOrderNo(orderNo);
         if(order != null){
@@ -606,7 +595,7 @@ public class OrderServiceImpl implements IOrderService {
     }
 
 
-
+    @Override
     public ServerResponse<PageInfo> manageSearch(Long orderNo,int pageNum,int pageSize){
         PageHelper.startPage(pageNum,pageSize);
         Order order = orderMapper.selectByOrderNo(orderNo);
@@ -621,7 +610,7 @@ public class OrderServiceImpl implements IOrderService {
         return ServerResponse.createByErrorMessage("订单不存在");
     }
 
-
+    @Override
     public ServerResponse<String> manageSendGoods(Long orderNo){
         Order order= orderMapper.selectByOrderNo(orderNo);
         if(order != null){

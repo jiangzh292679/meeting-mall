@@ -1,6 +1,6 @@
-package com.mmall.dao;
+package com.stylefeng.guns.modular.business.dao;
 
-import com.mmall.pojo.Order;
+import com.stylefeng.guns.modular.business.pojo.Order;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -18,7 +18,7 @@ public interface OrderMapper {
 
     int updateByPrimaryKey(Order record);
 
-    Order selectByUserIdAndOrderNo(@Param("userId")Integer userId,@Param("orderNo")Long orderNo);
+    Order selectByUserIdAndOrderNo(@Param("userId") Integer userId, @Param("orderNo") Long orderNo);
 
 
     Order selectByOrderNo(Long orderNo);

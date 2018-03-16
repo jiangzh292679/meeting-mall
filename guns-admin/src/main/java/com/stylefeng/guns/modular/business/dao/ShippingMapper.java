@@ -1,6 +1,6 @@
-package com.mmall.dao;
+package com.stylefeng.guns.modular.business.dao;
 
-import com.mmall.pojo.Shipping;
+import com.stylefeng.guns.modular.business.pojo.Shipping;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -18,12 +18,12 @@ public interface ShippingMapper {
 
     int updateByPrimaryKey(Shipping record);
 
-    int deleteByShippingIdUserId(@Param("userId")Integer userId,@Param("shippingId") Integer shippingId);
+    int deleteByShippingIdUserId(@Param("userId") Integer userId, @Param("shippingId") Integer shippingId);
 
     int updateByShipping(Shipping record);
 
-    Shipping selectByShippingIdUserId(@Param("userId")Integer userId,@Param("shippingId") Integer shippingId);
+    Shipping selectByShippingIdUserId(@Param("userId") Integer userId, @Param("shippingId") Integer shippingId);
 
-    List<Shipping> selectByUserId(@Param("userId")Integer userId);
+    List<Shipping> selectByUserId(@Param("userId") Integer userId);
 
 }

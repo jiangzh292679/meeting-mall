@@ -1,9 +1,9 @@
-package com.mmall.vo;
+package com.stylefeng.guns.modular.business.vo;
 
 import java.math.BigDecimal;
 
 /**
- * Created by geely
+ * Created by jiangzh
  */
 public class ProductDetailVo {
 

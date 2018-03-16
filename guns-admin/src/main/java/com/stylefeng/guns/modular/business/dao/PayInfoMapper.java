@@ -1,6 +1,7 @@
-package com.mmall.dao;
+package com.stylefeng.guns.modular.business.dao;
 
-import com.mmall.pojo.PayInfo;
+
+import com.stylefeng.guns.modular.business.pojo.PayInfo;
 
 public interface PayInfoMapper {
     int deleteByPrimaryKey(Integer id);

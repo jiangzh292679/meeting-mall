@@ -1,4 +1,4 @@
-package com.mmall.util;
+package com.stylefeng.guns.modular.business.util;
 
 import org.apache.commons.lang3.StringUtils;
 import org.joda.time.DateTime;

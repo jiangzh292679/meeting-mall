@@ -1,5 +1,7 @@
-package com.mmall.util;
+package com.stylefeng.guns.modular.business.util;
 
+import com.google.common.collect.Lists;
+import com.stylefeng.guns.core.util.FileUtil;
 import org.apache.commons.net.ftp.FTPClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -77,14 +79,6 @@ public class FTPUtil {
         }
         return isSuccess;
     }
-
-
-
-
-
-
-
-
 
 
 

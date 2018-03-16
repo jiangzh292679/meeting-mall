@@ -1,11 +1,11 @@
-package com.mmall.vo;
+package com.stylefeng.guns.modular.business.vo;
 
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
 /**
- * Created by geely
+ * Created by jiangzh
  */
 public class OrderVo {
 

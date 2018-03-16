@@ -1,4 +1,4 @@
-package com.mmall.pojo;
+package com.stylefeng.guns.modular.business.pojo;
 
 import java.math.BigDecimal;
 import java.util.Date;

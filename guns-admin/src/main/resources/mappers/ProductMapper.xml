@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.mmall.dao.ProductMapper" >
-  <resultMap id="BaseResultMap" type="com.mmall.pojo.Product" >
+<mapper namespace="com.stylefeng.guns.modular.business.dao.ProductMapper" >
+  <resultMap id="BaseResultMap" type="com.stylefeng.guns.modular.business.pojo.Product" >
     <constructor >
       <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="category_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
@@ -24,15 +24,15 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from mmall_product
+    from meeting_product
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from mmall_product
+    delete from meeting_product
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.mmall.pojo.Product" >
-    insert into mmall_product (id, category_id, name, 
+  <insert id="insert" parameterType="com.stylefeng.guns.modular.business.pojo.Product" >
+    insert into meeting_product (id, category_id, name,
       subtitle, main_image, sub_images, 
       detail, price, stock, 
       status, create_time, update_time
@@ -43,8 +43,8 @@
       #{status,jdbcType=INTEGER}, now(), now()
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.mmall.pojo.Product" >
-    insert into mmall_product
+  <insert id="insertSelective" parameterType="com.stylefeng.guns.modular.business.pojo.Product" >
+    insert into meeting_product
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
@@ -122,8 +122,8 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.mmall.pojo.Product" >
-    update mmall_product
+  <update id="updateByPrimaryKeySelective" parameterType="com.stylefeng.guns.modular.business.pojo.Product" >
+    update meeting_product
     <set >
       <if test="categoryId != null" >
         category_id = #{categoryId,jdbcType=INTEGER},
@@ -161,8 +161,8 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.mmall.pojo.Product" >
-    update mmall_product
+  <update id="updateByPrimaryKey" parameterType="com.stylefeng.guns.modular.business.pojo.Product" >
+    update meeting_product
     set category_id = #{categoryId,jdbcType=INTEGER},
       name = #{name,jdbcType=VARCHAR},
       subtitle = #{subtitle,jdbcType=VARCHAR},
@@ -181,7 +181,7 @@
   <select id="selectList" resultMap="BaseResultMap" >
     SELECT
     <include refid="Base_Column_List"/>
-    from mmall_product
+    from meeting_product
     ORDER BY id asc
   </select>
 
@@ -189,7 +189,7 @@
   <select id="selectByNameAndProductId" resultMap="BaseResultMap" parameterType="map">
     SELECT
     <include refid="Base_Column_List"/>
-    from mmall_product
+    from meeting_product
     <where>
       <if test="productName != null">
         and name like #{productName}
@@ -203,7 +203,7 @@
   <select id="selectByNameAndCategoryIds" resultMap="BaseResultMap" parameterType="map">
     SELECT
     <include refid="Base_Column_List"></include>
-    from mmall_product
+    from meeting_product
     where status = 1
     <if test="productName != null">
       and name like #{productName}

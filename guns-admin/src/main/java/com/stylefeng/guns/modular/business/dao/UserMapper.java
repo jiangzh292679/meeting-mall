@@ -1,8 +1,10 @@
-package com.mmall.dao;
+package com.stylefeng.guns.modular.business.dao;
 
-import com.mmall.pojo.User;
+import com.stylefeng.guns.modular.business.pojo.User;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository("meetingUserMapper")
 public interface UserMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -20,15 +22,15 @@ public interface UserMapper {
 
     int checkEmail(String email);
 
-    User selectLogin(@Param("username") String username, @Param("password")String password);
+    User selectLogin(@Param("username") String username, @Param("password") String password);
 
     String selectQuestionByUsername(String username);
 
-    int checkAnswer(@Param("username")String username,@Param("question")String question,@Param("answer")String answer);
+    int checkAnswer(@Param("username") String username, @Param("question") String question, @Param("answer") String answer);
 
-    int updatePasswordByUsername(@Param("username")String username,@Param("passwordNew")String passwordNew);
+    int updatePasswordByUsername(@Param("username") String username, @Param("passwordNew") String passwordNew);
 
-    int checkPassword(@Param(value="password")String password,@Param("userId")Integer userId);
+    int checkPassword(@Param(value = "password") String password, @Param("userId") Integer userId);
 
-    int checkEmailByUserId(@Param(value="email")String email,@Param(value="userId")Integer userId);
+    int checkEmailByUserId(@Param(value = "email") String email, @Param(value = "userId") Integer userId);
 }

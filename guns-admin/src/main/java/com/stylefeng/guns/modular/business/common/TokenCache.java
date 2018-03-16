@@ -1,4 +1,4 @@
-package com.mmall.common;
+package com.stylefeng.guns.modular.business.common;
 
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;

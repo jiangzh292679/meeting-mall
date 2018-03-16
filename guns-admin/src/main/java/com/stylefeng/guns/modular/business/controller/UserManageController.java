@@ -1,9 +1,9 @@
-package com.mmall.controller.backend;
+package com.stylefeng.guns.modular.business.controller;
 
-import com.mmall.common.Const;
-import com.mmall.common.ServerResponse;
-import com.mmall.pojo.User;
-import com.mmall.service.IUserService;
+import com.stylefeng.guns.modular.business.common.Const;
+import com.stylefeng.guns.modular.business.common.ServerResponse;
+import com.stylefeng.guns.modular.business.pojo.User;
+import com.stylefeng.guns.modular.business.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;

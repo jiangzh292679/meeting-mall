@@ -1,6 +1,7 @@
-package com.mmall.dao;
+package com.stylefeng.guns.modular.business.dao;
 
-import com.mmall.pojo.Category;
+
+import com.stylefeng.guns.modular.business.pojo.Category;
 
 import java.util.List;
 
